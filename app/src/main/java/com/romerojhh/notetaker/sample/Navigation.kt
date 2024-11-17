@@ -1,4 +1,4 @@
-package com.romerojhh.notetaker.sample.navigation
+package com.romerojhh.notetaker.sample
 
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
