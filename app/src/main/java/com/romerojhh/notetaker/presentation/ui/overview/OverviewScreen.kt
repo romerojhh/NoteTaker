@@ -2,6 +2,7 @@ package com.romerojhh.notetaker.presentation.ui.overview
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,11 +14,31 @@ fun OverviewScreen(
     navigateToDetails: () -> Unit
 ) {
     Surface(modifier = modifier.fillMaxSize()) {
-        Text(
-            "Overview Screen",
-            modifier = Modifier.clickable {
-                navigateToDetails()
+        LazyColumn {
+            item {
+                Text(
+                    "Overview Screen",
+                    modifier = Modifier.clickable {
+                        navigateToDetails()
+                    }
+                )
             }
-        )
+            item {
+                Text(
+                    "Overview Screen",
+                    modifier = Modifier.clickable {
+                        navigateToDetails()
+                    }
+                )
+            }
+            item {
+                Text(
+                    "Overview Screen",
+                    modifier = Modifier.clickable {
+                        navigateToDetails()
+                    }
+                )
+            }
+        }
     }
 }
