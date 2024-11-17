@@ -1,4 +1,4 @@
-package com.romerojhh.notetaker.ui.theme
+package com.romerojhh.notetaker.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
