@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +8,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
@@ -69,6 +73,7 @@ dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.kotlinx.datetime)
     kapt(libs.hilt.android.compiler)
+    detektPlugins(libs.detekt.formatting)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -81,4 +86,20 @@ dependencies {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+
+detekt {
+    toolVersion = "1.23.7"
+    config.setFrom(file("config/detekt/detekt.yml"))
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = "1.8"
+    reports {
+        html.required.set(true) // observe findings in your browser with structure and code snippets
+    }
+}
+
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = "1.8"
 }
