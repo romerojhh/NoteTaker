@@ -8,13 +8,11 @@ import androidx.navigation.compose.composable
 import com.romerojhh.notetaker.presentation.ui.details.DetailsScreen
 import com.romerojhh.notetaker.presentation.ui.overview.OverviewScreen
 
-
 @Composable
 fun NavGraph(
-    modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    modifier: Modifier = Modifier
 ) {
-
     NavHost(
         navController = navController,
         startDestination = Screen.Overview.route

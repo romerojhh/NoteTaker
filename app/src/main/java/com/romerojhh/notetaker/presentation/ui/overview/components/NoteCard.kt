@@ -11,14 +11,16 @@ import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 
 @Composable
 fun NoteCard(
-    noteTeaserUiModelList: List<NoteTeaserUiModel>
+    noteTeaserUiModelList: List<NoteTeaserUiModel>,
+    modifier: Modifier = Modifier
 ) {
-    Card {
+    Card(modifier) {
         NoteLazyList(
-            modifier = Modifier.padding(
-                horizontal = AppSize.xLargePadding,
-                vertical = AppSize.largePadding
-            ),
+            modifier =
+                Modifier.padding(
+                    horizontal = AppSize.xLargePadding,
+                    vertical = AppSize.largePadding
+                ),
             noteTeaserUiModelList = noteTeaserUiModelList
         )
     }
@@ -26,17 +28,18 @@ fun NoteCard(
 
 @Preview
 @Composable
-fun NoteCardPreview() {
-    val noteTeaserUiModel = NoteTeaserUiModel(
-        dateCreated = "11/12/2024",
-        noteTitle = "Note title",
-        noteContentTeaser = "This is a content teaser",
-    )
+private fun NoteCardPreview() {
+    val noteTeaserUiModel =
+        NoteTeaserUiModel(
+            dateCreated = "11/12/2024",
+            noteTitle = "Note title",
+            noteContentTeaser = "This is a content teaser"
+        )
 
     val noteTeaserUiModelList =
         listOf(noteTeaserUiModel.copy(), noteTeaserUiModel.copy(), noteTeaserUiModel.copy())
 
     NoteTakerTheme {
-        NoteCard(noteTeaserUiModelList)
+        NoteCard(noteTeaserUiModelList = noteTeaserUiModelList)
     }
 }

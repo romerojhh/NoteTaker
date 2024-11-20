@@ -17,9 +17,11 @@ import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 
 @Composable
 fun NoteTeaser(
-    noteTeaserUiModel: NoteTeaserUiModel
+    noteTeaserUiModel: NoteTeaserUiModel,
+    modifier: Modifier = Modifier
 ) {
-    Column (
+    Column(
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(AppSize.mediumPadding)
     ) {
         Text(noteTeaserUiModel.noteTitle, style = AppTypography.titleMedium)
@@ -30,10 +32,11 @@ fun NoteTeaser(
 @Composable
 fun NoteContentTeaser(
     date: String,
-    contentTeaser: String
+    contentTeaser: String,
+    modifier: Modifier = Modifier
 ) {
-    Row (
-        modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+    Row(
+        modifier = modifier.fillMaxWidth().wrapContentHeight(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(AppSize.largePadding)
     ) {
@@ -44,12 +47,13 @@ fun NoteContentTeaser(
 
 @Preview(showBackground = true)
 @Composable
-fun NoteTeaserPreview() {
-    val noteTeaserUiModel = NoteTeaserUiModel(
-        dateCreated = "11/12/2024",
-        noteTitle = "Note title",
-        noteContentTeaser = "This is a content teaser",
-    )
+private fun NoteTeaserPreview() {
+    val noteTeaserUiModel =
+        NoteTeaserUiModel(
+            dateCreated = "11/12/2024",
+            noteTitle = "Note title",
+            noteContentTeaser = "This is a content teaser",
+        )
 
     NoteTakerTheme {
         NoteTeaser(

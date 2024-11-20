@@ -1,6 +1,9 @@
 package com.romerojhh.notetaker.presentation.navigation
 
-sealed class Screen(val route: String) {
+sealed class Screen(
+    val route: String
+) {
     data object Overview : Screen("Overview")
-    data object Details: Screen("Details")
+
+    data object Details : Screen("Details")
 }

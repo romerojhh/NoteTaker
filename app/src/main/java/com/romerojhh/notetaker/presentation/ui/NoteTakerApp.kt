@@ -16,6 +16,7 @@ import com.romerojhh.notetaker.presentation.navigation.Screen
 import com.romerojhh.notetaker.presentation.theme.AppTypography
 import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 
+@Suppress("ktlint:compose:modifier-missing-check")
 @Composable
 fun NoteTakerApp() {
     NoteTakerTheme {
@@ -38,9 +39,11 @@ fun NoteTakerApp() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    title: String
+    title: String,
+    modifier: Modifier = Modifier
 ) {
     TopAppBar(
+        modifier = modifier,
         title = {
             Text(text = title, style = AppTypography.headlineLarge)
         }

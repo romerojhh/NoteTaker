@@ -8,7 +8,7 @@ import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 @Preview(
     showBackground = true
 )
-fun OverviewScreenPreview() {
+private fun OverviewScreenPreview() {
     NoteTakerTheme {
         OverviewScreen(
             navigateToDetails = {}

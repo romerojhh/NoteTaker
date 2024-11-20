@@ -16,13 +16,13 @@ import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 
 @Composable
 fun NoteLazyList(
-    modifier: Modifier = Modifier,
-    noteTeaserUiModelList: List<NoteTeaserUiModel>
+    noteTeaserUiModelList: List<NoteTeaserUiModel>,
+    modifier: Modifier = Modifier
 ) {
     val padding = AppSize.largePadding
     LazyColumn(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(padding),
+        verticalArrangement = Arrangement.spacedBy(padding)
     ) {
         itemsIndexed(noteTeaserUiModelList) { index, currTeaser ->
             NoteTeaser(currTeaser)
@@ -37,12 +37,13 @@ fun NoteLazyList(
 
 @Preview(showBackground = true)
 @Composable
-fun NoteLazyListPreview() {
-    val noteTeaserUiModel = NoteTeaserUiModel(
-        dateCreated = "11/12/2024",
-        noteTitle = "Note title",
-        noteContentTeaser = "This is a content teaser",
-    )
+private fun NoteLazyListPreview() {
+    val noteTeaserUiModel =
+        NoteTeaserUiModel(
+            dateCreated = "11/12/2024",
+            noteTitle = "Note title",
+            noteContentTeaser = "This is a content teaser"
+        )
 
     val noteTeaserUiModelList =
         listOf(noteTeaserUiModel.copy(), noteTeaserUiModel.copy(), noteTeaserUiModel.copy())
