@@ -31,9 +31,13 @@ jobs:
     - name: Run Detekt
       run: ./gradlew detekt
 
-    # Step 5: Upload Detekt Report
+    # Step 5: List directory content
+    - name: List Detekt Report Files
+      run: ls -R app/build/reports/detekt
+
+    # Step 6: Upload Detekt Report
     - name: Upload Detekt HTML Report
       uses: actions/upload-artifact@v4
       with:
         name: detekt-report
-        path: build/reports/detekt/detekt.html
+        path: app/build/reports/detekt/detekt.html
