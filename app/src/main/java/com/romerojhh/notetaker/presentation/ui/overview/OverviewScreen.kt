@@ -18,10 +18,9 @@ fun OverviewScreen(
             item {
                 Text(
                     "Overview Screen",
-                    modifier =
-                        Modifier.clickable {
-                            navigateToDetails()
-                        }
+                    modifier = Modifier.clickable {
+                        navigateToDetails()
+                    }
                 )
             }
             item {

@@ -7,6 +7,4 @@ import dagger.hilt.components.SingletonComponent
 // This module lifecycle will follow Application's lifecycle
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
-
-}
+object AppModule

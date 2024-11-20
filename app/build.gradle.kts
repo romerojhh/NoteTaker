@@ -91,6 +91,7 @@ kapt {
 detekt {
     toolVersion = "1.23.7"
     config.setFrom(file("config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
 }
 
 tasks.withType<Detekt>().configureEach {

@@ -16,11 +16,10 @@ fun NoteCard(
 ) {
     Card(modifier) {
         NoteLazyList(
-            modifier =
-                Modifier.padding(
-                    horizontal = AppSize.xLargePadding,
-                    vertical = AppSize.largePadding
-                ),
+            modifier = Modifier.padding(
+                horizontal = AppSize.xLargePadding,
+                vertical = AppSize.largePadding
+            ),
             noteTeaserUiModelList = noteTeaserUiModelList
         )
     }

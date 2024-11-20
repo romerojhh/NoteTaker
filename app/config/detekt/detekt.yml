@@ -784,3 +784,6 @@ style:
     active: true
     excludeImports:
       - 'java.util.*'
+
+formatting:
+  active: true
