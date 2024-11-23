@@ -7,6 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 
 @Composable
 fun OverviewScreen(
@@ -36,5 +38,17 @@ fun OverviewScreen(
                 )
             }
         }
+    }
+}
+
+@Composable
+@Preview(
+    showBackground = true
+)
+private fun OverviewScreenPreview() {
+    NoteTakerTheme {
+        OverviewScreen(
+            navigateToDetails = {}
+        )
     }
 }
