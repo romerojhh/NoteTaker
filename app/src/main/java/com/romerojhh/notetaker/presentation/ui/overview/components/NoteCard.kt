@@ -1,7 +1,9 @@
 package com.romerojhh.notetaker.presentation.ui.overview.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,18 +16,25 @@ fun NoteCard(
     noteTeaserUiModelList: List<NoteTeaserUiModel>,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier) {
-        NoteLazyList(
-            modifier = Modifier.padding(
-                horizontal = AppSize.xLargePadding,
-                vertical = AppSize.largePadding
-            ),
-            noteTeaserUiModelList = noteTeaserUiModelList
+    val paddedModifier = Modifier.padding(
+        horizontal = AppSize.xLargePadding,
+        vertical = AppSize.largePadding
+    )
+    Column(modifier) {
+        Text(
+            modifier = paddedModifier,
+            text = "Month / Year"
         )
+        Card {
+            NoteLazyList(
+                modifier = paddedModifier,
+                noteTeaserUiModelList = noteTeaserUiModelList
+            )
+        }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun NoteCardPreview() {
     val noteTeaserUiModel =
