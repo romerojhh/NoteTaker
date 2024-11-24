@@ -1,10 +1,7 @@
 package com.romerojhh.notetaker.presentation.ui.overview.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,15 +17,14 @@ fun NoteLazyList(
     modifier: Modifier = Modifier
 ) {
     val padding = AppSize.largePadding
-    LazyColumn(
+    Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(padding)
     ) {
-        itemsIndexed(noteTeaserUiModelList) { index, currTeaser ->
-            NoteTeaser(currTeaser)
+        noteTeaserUiModelList.forEachIndexed { index, currNoteTeaserUiModel ->
+            NoteTeaser(currNoteTeaserUiModel)
 
             if (index < noteTeaserUiModelList.lastIndex) {
-                Spacer(Modifier.padding(top = padding))
                 HorizontalDivider(thickness = Dp.Hairline)
             }
         }

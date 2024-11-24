@@ -14,6 +14,7 @@ import com.romerojhh.notetaker.presentation.theme.NoteTakerTheme
 @Composable
 fun NoteCard(
     noteTeaserUiModelList: List<NoteTeaserUiModel>,
+    date: String,
     modifier: Modifier = Modifier
 ) {
     val paddedModifier = Modifier.padding(
@@ -23,7 +24,7 @@ fun NoteCard(
     Column(modifier) {
         Text(
             modifier = paddedModifier,
-            text = "Month / Year"
+            text = date
         )
         Card {
             NoteLazyList(
@@ -48,6 +49,6 @@ private fun NoteCardPreview() {
         listOf(noteTeaserUiModel.copy(), noteTeaserUiModel.copy(), noteTeaserUiModel.copy())
 
     NoteTakerTheme {
-        NoteCard(noteTeaserUiModelList = noteTeaserUiModelList)
+        NoteCard(noteTeaserUiModelList = noteTeaserUiModelList, date = "November, 2024")
     }
 }
