@@ -7,4 +7,5 @@ plugins {
     kotlin("plugin.serialization") version "2.0.20"
     id("com.google.dagger.hilt.android") version "2.51.1" apply false
     kotlin("kapt") version "2.0.21"
+    id("io.gitlab.arturbosch.detekt") version "1.23.7" apply false
 }

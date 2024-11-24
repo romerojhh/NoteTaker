@@ -7,6 +7,6 @@ import dagger.hilt.android.HiltAndroidApp
 class NoteTakerApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        // TODO: Initialize any dependencies or libraries here
+        // Initialize any dependencies or libraries here
     }
 }

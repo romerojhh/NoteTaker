@@ -15,11 +15,14 @@ import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Profile(val name: String)
+data class Profile(
+    val name: String
+)
 
 @Serializable
 object FriendsList
 
+@Suppress("ktlint:compose:modifier-missing-check")
 // Define the ProfileScreen composable.
 @Composable
 fun ProfileScreen(
@@ -34,6 +37,7 @@ fun ProfileScreen(
     }
 }
 
+@Suppress("ktlint:compose:modifier-missing-check")
 // Define the FriendsListScreen composable.
 @Composable
 fun FriendsListScreen(onNavigateToProfile: () -> Unit) {
