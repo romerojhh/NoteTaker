@@ -5,9 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.romerojhh.notetaker.model.NoteContentUiModel
 import com.romerojhh.notetaker.model.NoteOverviewUiModel
 import com.romerojhh.notetaker.model.NoteTeaserUiModel
-import com.romerojhh.notetaker.presentation.ui.details.DetailsScreen
+import com.romerojhh.notetaker.presentation.ui.content.ContentScreen
 import com.romerojhh.notetaker.presentation.ui.overview.OverviewScreen
 
 @Composable
@@ -51,7 +52,13 @@ fun NavGraph(
             OverviewScreen(noteOverviewUiModelList, modifier)
         }
         composable(route = Screen.Details.route) {
-            DetailsScreen(modifier) {
+            val noteContentUiModel = NoteContentUiModel(
+                title = "Note title",
+                content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, " +
+                    "sed do eiusmod tempor",
+                dateModified = "11/29/2024"
+            )
+            ContentScreen(noteContentUiModel) {
                 navController.navigate(Screen.Overview.route) {
                     popUpTo(Screen.Overview.route) {
                         inclusive = true

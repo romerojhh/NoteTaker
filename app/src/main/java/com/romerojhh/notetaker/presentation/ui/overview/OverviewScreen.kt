@@ -2,6 +2,8 @@ package com.romerojhh.notetaker.presentation.ui.overview
 
 import android.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,6 +11,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -17,6 +23,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.romerojhh.notetaker.model.NoteOverviewUiModel
@@ -33,12 +43,37 @@ fun OverviewScreen(
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
-        topBar = { TopBar() },
+        topBar = {
+            TopBar(
+                topBarTitle = "Your Notes",
+                dropdownMenuItem = {
+                    DropdownMenuItemRomero()
+                }
+            )
+        },
         floatingActionButton = { Fab() }
     ) { innerPadding ->
         Content(
-            modifier = Modifier.padding(innerPadding).padding(horizontal = AppSize.xxLargePadding),
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = AppSize.xxLargePadding),
             noteOverviewUiModelList = noteOverviewUiModelList
+        )
+    }
+}
+
+@Composable
+private fun DropdownMenuItemRomero() {
+    Column {
+        DropdownMenuItem(
+            text = { Text("Edit") },
+            onClick = { /* Handle edit! */ },
+            leadingIcon = { Icon(Icons.Outlined.Edit, contentDescription = null) }
+        )
+        DropdownMenuItem(
+            text = { Text("Settings") },
+            onClick = { /* Handle settings! */ },
+            leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) }
         )
     }
 }
@@ -77,26 +112,41 @@ private fun Fab() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar() {
+fun TopBar(
+    topBarTitle: String,
+    modifier: Modifier = Modifier,
+    backNavigation: @Composable () -> Unit = {},
+    dropdownMenuItem: @Composable () -> Unit
+) {
     TopAppBar(
+        modifier = modifier,
         title = {
             Text(
-                text = "Your Notes",
+                text = topBarTitle,
                 style = AppTypography.headlineSmall,
                 modifier = Modifier.padding(start = AppSize.xLargePadding)
             )
         },
-        actions = {
-            IconButton(
-                onClick = { TODO() }
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = "more"
-                )
-            }
-        }
+        actions = { DropdownMenu(Modifier, dropdownMenuItem) },
+        navigationIcon = backNavigation
     )
+}
+
+@Composable
+fun DropdownMenu(
+    modifier: Modifier = Modifier,
+    dropdownMenuItem: @Composable () -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Box(modifier) {
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            dropdownMenuItem()
+        }
+        IconButton(onClick = { expanded = true }) {
+            Icon(Icons.Default.MoreVert, contentDescription = "more")
+        }
+    }
 }
 
 @Composable
