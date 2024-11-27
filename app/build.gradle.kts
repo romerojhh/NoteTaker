@@ -7,8 +7,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization")
     id("com.google.dagger.hilt.android")
-    kotlin("kapt")
     id("io.gitlab.arturbosch.detekt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -72,20 +72,19 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.kotlinx.datetime)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.room.ktx)
     detektPlugins(libs.detekt.formatting)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.room.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }
 
 detekt {
